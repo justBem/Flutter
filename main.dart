@@ -1,22 +1,37 @@
+// Импорт бул бардык флаттерге тиешелуу виджеттерди озуно камтыйт.
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sabak_2/secondPage.dart';
 
-void main() {
+// void: Эч нерсе кайтарбай турган функция
+// main: Негизги функция
+void main() { 
+  //runApp: Сиздин тиркемениздин баштоо функциясы ал ичине виджет алат
+  //MyApp(): класс же виджеттин аталышы
   runApp(const MyApp());
 }
-
+// class MyApp : класс
+// extends : мурас алуу
 class MyApp extends StatelessWidget {
+  // класстын конструктору
   const MyApp({super.key});
 
-  
+  // @override :
   @override
+  // build: куруу озуно виджет алат
+  // BuildContext : адрес, виджеттерди козомолдоочу вектор
   Widget build(BuildContext context) {
+    // return : кайтаруу 
+    // MaterialApp :  материалдык дизайны бар жаны флаттер колдонмосун тузот
     return MaterialApp(
       title: 'Flutter Demo',
+    // theme: бул тема MaterialAppка тиешелуу касиет
       theme: ThemeData(
         
       primarySwatch: Colors.grey,
       ),
+      // home: MaterialApp касиети
+      // MuhomePage: виджет же класс
       home: const MyHomePage(),
     );
   }
@@ -77,9 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
                      index++;
                   });
                  
-                }, child: Icon(Icons.add,color:Colors.white))
+                }, child: Icon(Icons.add,color:Colors.white)),
+                
             ],
           ),
+          SizedBox(
+            height: 10,
+          ),
+          IconButton(onPressed:(){
+            Navigator.push(context, 
+            MaterialPageRoute(builder:(context) =>EkinchiBet( count: index,)));
+          }, icon: Icon(Icons.next_plan,
+           size: 50,
+           color: Colors.green,))
           ],
       ),
       ),
